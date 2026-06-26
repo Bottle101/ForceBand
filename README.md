@@ -61,9 +61,7 @@ python scripts/evaluate.py                 # released DINOv2 (Apache-2.0) checkp
 ```
 
 Writes `overall_metrics.csv`, `per_session_metrics.csv`, and pred‑vs‑GT / scatter
-plots to `results/eval/teacher_forced/`. Eval is **teacher‑forced** (each window
-anchored on the ground‑truth previous force); `--mode rollout` exists but is not
-the reported metric.
+plots to `results/eval/teacher_forced/`. 
 
 Reference — mean over fingers, 7 val sessions (sensor units; ÷18 ≈ N). Per‑finger
 CSVs in `results/reference{,_dinov2}/`.
@@ -79,8 +77,7 @@ force and are noisier.
 
 The checkpoint transfers in *shape* but not absolute *scale* to a new setup, so a
 short calibration is needed. Demo splits: **`calib.txt`** = demos 0–35
-(fine‑tune), **`demo_val.txt`** = demos 36–93 (validate); demos 94–111 are
-excluded (no force — see `data/demos/manifest.csv`).
+(fine‑tune), **`demo_val.txt`** = demos 36–93 (validate).
 
 ```bash
 python scripts/evaluate.py --split demo_val.txt --out results/demo_zeroshot   # 1) baseline

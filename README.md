@@ -3,7 +3,7 @@
 [![paper](https://img.shields.io/badge/paper-arXiv%3A2606.26093-b31b1b.svg)](https://arxiv.org/abs/2606.26093)
 &nbsp;[![project](https://img.shields.io/badge/project-page-1f72ff.svg)](https://forceband-emg.github.io/)
 &nbsp;[![python](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/)
-&nbsp;[![license](https://img.shields.io/badge/code-see%20LICENSE-lightgrey.svg)](LICENSE)
+&nbsp;[![license](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 Official **EMG2Force model** code for **"ForceBand: Learning Forceful Manipulation
 with sEMG"** ([arXiv:2606.26093](https://arxiv.org/abs/2606.26093) ·

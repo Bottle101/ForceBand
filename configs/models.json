@@ -1,0 +1,11 @@
+{
+  "default": "dinov2",
+  "models": {
+    "dinov2": {
+      "checkpoint": "checkpoints/emg2force_prevforce_dinov2.ckpt",
+      "backbone": "vit_small_patch14_reg4_dinov2.lvd142m",
+      "backbone_license": "Apache-2.0",
+      "description": "Released model — DINOv2 ViT-S/14 (registers) backbone, Apache-2.0."
+    }
+  }
+}

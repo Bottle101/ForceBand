@@ -1,0 +1,27 @@
+TODO: CHOOSE AND INSERT A LICENSE BEFORE PUBLISHING.
+================================================================================
+
+This is a placeholder. Pick the license for the code in this repository (e.g.
+MIT, BSD-3-Clause, Apache-2.0, or CC-BY-NC-SA-4.0) and replace this file with
+its full text. Until then, all rights are reserved by the authors.
+
+Please also review the following third-party / data considerations, which are
+NOT governed by this repository's code license:
+
+1. DINOv3 backbone weights.
+   The released checkpoint (checkpoints/emg2force_prevforce.ckpt) contains
+   fine-tuned weights of a DINOv3 ViT-S/16 backbone (timm id
+   "vit_small_patch16_dinov3.lvd1689m"), which derives from Meta's DINOv3
+   release. Redistribution of these weights must comply with the DINOv3 license.
+   Confirm this before publishing the checkpoint.
+
+2. Dataset.
+   The HDF5 sessions under data/ and the paired RGB videos under data/videos/
+   are recordings collected by the authors. State the intended data license here
+   (the model/data are intended for research use).
+
+3. Clean-room reimplementation.
+   The code in emg2force/ is an independent reimplementation of the evaluation /
+   fine-tuning path. It does NOT include source from the emg2pose project
+   (which is distributed under CC-BY-NC-SA-4.0); that license therefore does not
+   attach to this code.

@@ -34,14 +34,10 @@ predicts per‑finger fingertip forces (thumb, index, middle, ring, pinky) from 
 
 **Before paper acceptance**
 - [ ] Hardware DIY tutorial (build your own ForceBand)
+- [x] [EMG hardware survey](https://docs.google.com/spreadsheets/d/16lj8mBM5Cl6KeYYbC8RoRGDO3nr-_u7296saMwjIzMw/edit?usp=sharing) — sEMG front‑ends / electrodes / acquisition boards compared
 - [ ] Full pretraining dataset
 - [ ] Robot policy training pipeline
 - [ ] DINOv3 backbone variant — its [license](https://ai.meta.com/resources/models-and-libraries/dinov3-license/) needs further validation on our side before we redistribute, so for now we ship DINOv2; planned as an opt‑in *download‑DINOv3‑yourself* recipe (the two perform on par — see [Backbones](#backbones--dinov2-shipped-vs-dinov3))
-
-**By Monday (Mon 2026‑06‑29)**
-- [ ] EMG hardware survey
-- [ ] More human demonstration data
-- [ ] Minor fixes + more readable README
 
 ## Install
 

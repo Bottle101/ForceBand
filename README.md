@@ -33,6 +33,7 @@ predicts per‑finger fingertip forces (thumb, index, middle, ring, pinky) from 
 ## Roadmap
 
 **Before paper acceptance**
+- [x] Hardware [Bill of Materials (BOM)](https://docs.google.com/spreadsheets/d/16lj8mBM5Cl6KeYYbC8RoRGDO3nr-_u7296saMwjIzMw/edit?usp=sharing)
 - [ ] Hardware DIY tutorial (build your own ForceBand)
 - [x] [EMG hardware survey](https://docs.google.com/spreadsheets/d/16lj8mBM5Cl6KeYYbC8RoRGDO3nr-_u7296saMwjIzMw/edit?usp=sharing) — sEMG front‑ends / electrodes / acquisition boards compared
 - [ ] Full pretraining dataset

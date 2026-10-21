@@ -2,6 +2,7 @@
 
 [![paper](https://img.shields.io/badge/paper-arXiv%3A2606.26093-b31b1b.svg)](https://arxiv.org/abs/2606.26093)
 &nbsp;[![project](https://img.shields.io/badge/project-page-1f72ff.svg)](https://forceband-emg.github.io/)
+&nbsp;[![dataset](https://img.shields.io/badge/%F0%9F%A4%97%20dataset-Hugging%20Face-ffcc4d.svg)](https://huggingface.co/datasets/boootaooo/forceband-emg2force)
 &nbsp;[![python](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/)
 &nbsp;[![license](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
@@ -27,7 +28,7 @@ predicts per‑finger fingertip forces (thumb, index, middle, ring, pinky) from 
 | ✅ Pretrained checkpoint (DINOv2, Apache‑2.0) | released | `checkpoints/` |
 | ✅ Validation set — held‑out pretraining chunks, ~5‑min quick checkpoint test | released | `data/val/` · `data/splits/val.txt` |
 | ✅ Deploy‑demo set — calibration + held‑out validation | released | `data/demos/` · `data/splits/{calib,demo_val}.txt` |
-| ⏳ Full pretraining dataset | **under preparation** | — |
+| ✅ Full pretraining dataset — 8.6 h sEMG + IMU + force, 6.4 h with RGB video | released | [🤗 Hugging Face](https://huggingface.co/datasets/boootaooo/forceband-emg2force) |
 | ➕ RGB overlay videos (optional, ~1.3 GB) | Google Drive | `scripts/download_videos.py` |
 
 ## Roadmap
@@ -36,7 +37,7 @@ predicts per‑finger fingertip forces (thumb, index, middle, ring, pinky) from 
 - [x] Hardware [Bill of Materials (BOM)](https://docs.google.com/spreadsheets/d/16lj8mBM5Cl6KeYYbC8RoRGDO3nr-_u7296saMwjIzMw/edit?usp=sharing)
 - [ ] Hardware DIY tutorial (build your own ForceBand)
 - [x] [EMG hardware survey](https://docs.google.com/spreadsheets/d/16lj8mBM5Cl6KeYYbC8RoRGDO3nr-_u7296saMwjIzMw/edit?usp=sharing) — sEMG front‑ends / electrodes / acquisition boards compared
-- [ ] Full pretraining dataset
+- [x] [Full pretraining dataset](https://huggingface.co/datasets/boootaooo/forceband-emg2force)
 - [ ] Robot policy training pipeline
 - [ ] DINOv3 backbone variant — its [license](https://ai.meta.com/resources/models-and-libraries/dinov3-license/) needs further validation on our side before we redistribute, so for now we ship DINOv2; planned as an opt‑in *download‑DINOv3‑yourself* recipe (the two perform on par — see [Backbones](#backbones--dinov2-shipped-vs-dinov3))
 
@@ -108,6 +109,23 @@ recipe is on the [roadmap](#roadmap)):
 
 <sub>Val = 7 held‑out sessions (teacher‑forced); demo calibration fits demos 0–35 and validates on 36–93.</sub>
 
+
+## Dataset
+
+The full pretraining dataset is on Hugging Face:
+[`boootaooo/forceband-emg2force`](https://huggingface.co/datasets/boootaooo/forceband-emg2force) (Apache‑2.0). It holds 8.6 h of wrist sEMG + IMU +
+fingertip force from 53 recordings, 6.4 h of it with synchronized RGB video.
+
+```bash
+# everything (~7.7 GB)
+hf download boootaooo/forceband-emg2force --repo-type dataset --local-dir data/forceband
+# time series only (~0.55 GB)
+hf download boootaooo/forceband-emg2force --repo-type dataset --local-dir data/forceband \
+    --include "*.hdf5" --include "*.json" --include "*.csv"
+```
+
+Each `segments/<id>/timeseries.hdf5` uses the format below and loads directly with
+`emg2force.data.Emg2ForceDataset`; see the dataset card for the video files and masks.
 
 ## Data format
 

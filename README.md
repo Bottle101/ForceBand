@@ -28,18 +28,8 @@ predicts per‑finger fingertip forces (thumb, index, middle, ring, pinky) from 
 | ✅ Pretrained checkpoint (DINOv2, Apache‑2.0) | released | `checkpoints/` |
 | ✅ Validation set — held‑out pretraining chunks, ~5‑min quick checkpoint test | released | `data/val/` · `data/splits/val.txt` |
 | ✅ Deploy‑demo set — calibration + held‑out validation | released | `data/demos/` · `data/splits/{calib,demo_val}.txt` |
-| ✅ Full pretraining dataset — 8.6 h sEMG + IMU + force, 6.4 h with RGB video | released | [🤗 Hugging Face](https://huggingface.co/datasets/boootaooo/forceband-emg2force) |
+| ✅ Full pretraining dataset — 8.6 h of cleaned-up sEMG + IMU + force, 6.4 h with RGB video | released | [🤗 Hugging Face](https://huggingface.co/datasets/boootaooo/forceband-emg2force) |
 | ➕ RGB overlay videos (optional, ~1.3 GB) | Google Drive | `scripts/download_videos.py` |
-
-## Roadmap
-
-**Before paper acceptance**
-- [x] Hardware [Bill of Materials (BOM)](https://docs.google.com/spreadsheets/d/16lj8mBM5Cl6KeYYbC8RoRGDO3nr-_u7296saMwjIzMw/edit?usp=sharing)
-- [ ] Hardware DIY tutorial (build your own ForceBand)
-- [x] [EMG hardware survey](https://docs.google.com/spreadsheets/d/16lj8mBM5Cl6KeYYbC8RoRGDO3nr-_u7296saMwjIzMw/edit?usp=sharing) — sEMG front‑ends / electrodes / acquisition boards compared
-- [x] [Full pretraining dataset](https://huggingface.co/datasets/boootaooo/forceband-emg2force)
-- [ ] Robot policy training pipeline
-- [ ] DINOv3 backbone variant — its [license](https://ai.meta.com/resources/models-and-libraries/dinov3-license/) needs further validation on our side before we redistribute, so for now we ship DINOv2; planned as an opt‑in *download‑DINOv3‑yourself* recipe (the two perform on par — see [Backbones](#backbones--dinov2-shipped-vs-dinov3))
 
 ## Install
 
@@ -99,8 +89,7 @@ demos 0–35 cuts error ~5× on the held‑out demos:
 The release ships the **Apache‑2.0 DINOv2 ViT‑S/14** backbone (`timm` id
 `vit_small_patch14_reg4_dinov2.lvd142m`); `evaluate.py` / `finetune.py` /
 `load_model()` auto‑detect it from the checkpoint. We also trained a DINOv3
-ViT‑S/16 variant — the two are effectively on par, so we ship DINOv2 (a DINOv3
-recipe is on the [roadmap](#roadmap)):
+ViT‑S/16 variant — the two are effectively on par, so we ship DINOv2:
 
 | backbone | val MAE | val R² | val Pearson r | demo calib. — MAE (zero‑shot → cal.) |
 |---|---:|---:|---:|---:|
@@ -113,8 +102,8 @@ recipe is on the [roadmap](#roadmap)):
 ## Dataset
 
 The full pretraining dataset is on Hugging Face:
-[`boootaooo/forceband-emg2force`](https://huggingface.co/datasets/boootaooo/forceband-emg2force) (Apache‑2.0). It holds 8.6 h of wrist sEMG + IMU +
-fingertip force from 53 recordings, 6.4 h of it with synchronized RGB video.
+[`boootaooo/forceband-emg2force`](https://huggingface.co/datasets/boootaooo/forceband-emg2force) (Apache‑2.0). It holds 8.6 h of cleaned-up wrist sEMG +
+IMU + fingertip force from 53 recordings, 6.4 h of it with synchronized RGB video.
 
 ```bash
 # everything (~7.7 GB)

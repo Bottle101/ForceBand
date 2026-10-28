@@ -29,6 +29,7 @@ predicts per‑finger fingertip forces (thumb, index, middle, ring, pinky) from 
 | ✅ Validation set — held‑out pretraining chunks, ~5‑min quick checkpoint test | released | `data/val/` · `data/splits/val.txt` |
 | ✅ Deploy‑demo set — calibration + held‑out validation | released | `data/demos/` · `data/splits/{calib,demo_val}.txt` |
 | ✅ Full pretraining dataset — 8.6 h of cleaned-up sEMG + IMU + force, 6.4 h with RGB video | released | [🤗 Hugging Face](https://huggingface.co/datasets/boootaooo/forceband-emg2force) |
+| ✅ Hardware Bill of Materials (BOM) | released | [Google Sheets](https://docs.google.com/spreadsheets/d/16lj8mBM5Cl6KeYYbC8RoRGDO3nr-_u7296saMwjIzMw/edit?gid=0#gid=0) |
 | ➕ RGB overlay videos (optional, ~1.3 GB) | Google Drive | `scripts/download_videos.py` |
 
 ## Install
